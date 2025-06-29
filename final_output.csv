@@ -1,0 +1,7 @@
+name,age,email_address,salary_amount,department_name
+John Doe,25.0,john@example.com,50000.0,Engineering
+Jane Smith,30.0,jane@example.com,60000.0,Marketing
+Bob Johnson,35.0,N/A,70000.0,Engineering
+Alice Brown,28.0,alice@example.com,N/A,Sales
+Charlie Wilson,32.0,charlie@example.com,65000.0,Marketing
+David Lee,N/A,david@example.com,55000.0,Engineering

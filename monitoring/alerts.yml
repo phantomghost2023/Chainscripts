@@ -1,0 +1,8 @@
+groups:
+- name: chainscript
+  rules:
+  - alert: HighHealingRate
+    expr: rate(chainscript_healing_attempts_total[5m]) > 5
+    for: 10m
+    labels:
+      severity: warning

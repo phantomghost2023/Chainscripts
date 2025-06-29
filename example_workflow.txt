@@ -1,0 +1,8 @@
+# Example ChainScript Workflow
+# This demonstrates chaining multiple nano-scripts
+
+# Step 1: Get some data
+get top 3 hackernews stories
+
+# Step 2: Clean our test data
+clean test_data.csv
