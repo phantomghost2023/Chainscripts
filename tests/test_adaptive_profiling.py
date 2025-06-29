@@ -3,11 +3,7 @@
 Test script to validate the improved adaptive profiling and categorization logic
 """
 
-import sys
-import os
-sys.path.append(os.path.join(os.path.dirname(__file__), 'core'))
-
-from nano_engine import NanoScriptEngine
+from core.nano_engine import NanoScriptEngine
 
 def test_script_categorization():
     """Test script size categorization with various script names"""

@@ -4,7 +4,7 @@ import pytest
 
 def test_all_functions_have_docstrings():
     missing = []
-    for path in pathlib.Path("core").rglob("*.py"):
+    for path in pathlib.Path("chainscript/core").rglob("*.py"):
         # Skip __init__.py files as they often don't require docstrings
         if path.name == "__init__.py":
             continue

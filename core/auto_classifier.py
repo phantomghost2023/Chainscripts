@@ -3,23 +3,27 @@ from dataclasses import dataclass
 import numpy as np
 import ast
 
+
 @dataclass
 class ScriptSignature:
     """Represents the analyzed signature of a script."""
+
     loc: int
     complexity: float  # 0-1 (simple-complex)
     imports: list
     loop_depth: int
 
+
 class AutoClassifier:
     """Analyzes script characteristics and suggests execution strategies."""
+
     def __init__(self) -> None:
         self.golden_benchmarks = {
             "small": {"max_time": 0.001, "max_mem": 50},
             "medium-lightweight": {"max_time": 0.01, "max_mem": 100},
-            "large": {"max_time": 0.1, "max_mem": 200}
+            "large": {"max_time": 0.1, "max_mem": 200},
         }
-    
+
     def analyze_script(self, path: str) -> ScriptSignature:
         """
         Analyzes a Python script file to extract its signature.
@@ -32,12 +36,12 @@ class AutoClassifier:
         """
         with open(path) as f:
             tree = ast.parse(f.read())
-        
+
         return ScriptSignature(
             loc=len(tree.body),
             complexity=self._calc_complexity(tree),
             imports=self._extract_imports(tree),
-            loop_depth=self._max_loop_depth(tree)
+            loop_depth=self._max_loop_depth(tree),
         )
 
     def _calc_complexity(self, tree: ast.AST) -> float:
@@ -60,7 +64,7 @@ class AutoClassifier:
             elif isinstance(node, (ast.Call, ast.Compare)):
                 complexity += 1
         # Normalize to 0-1 range (example normalization, adjust as needed)
-        return min(1.0, complexity / 100.0) 
+        return min(1.0, complexity / 100.0)
 
     def _extract_imports(self, tree: ast.AST) -> list[str]:
         """
@@ -101,7 +105,7 @@ class AutoClassifier:
             # This simple approach doesn't decrement depth for exiting a loop block
             # A more robust solution would require a visitor pattern or tracking parent nodes
         return max_depth
-    
+
     def suggest_fix(self, script: ScriptSignature, actual_perf: dict) -> str:
         """
         Suggests a script profile based on its signature and actual performance.
@@ -113,13 +117,17 @@ class AutoClassifier:
         Returns:
             A string representing the suggested script profile (e.g., "small", "medium-lightweight").
         """
-        # Compare against golden benchmarks 
-        for profile, benchmarks in self.golden_benchmarks.items(): 
-            if (actual_perf["time"] <= benchmarks["max_time"] and 
-                actual_perf["memory"] <= benchmarks["max_mem"]): 
-                return profile  # First matching profile 
-        
-        # Emergency fallback rules 
-        if script.loc < 50: return "small" 
-        if "pandas" in script.imports: return "large" 
+        # Compare against golden benchmarks
+        for profile, benchmarks in self.golden_benchmarks.items():
+            if (
+                actual_perf["time"] <= benchmarks["max_time"]
+                and actual_perf["memory"] <= benchmarks["max_mem"]
+            ):
+                return profile  # First matching profile
+
+        # Emergency fallback rules
+        if script.loc < 50:
+            return "small"
+        if "pandas" in script.imports:
+            return "large"
         return "medium-balanced"

@@ -1,5 +1,7 @@
 import pytest
-from ..core.nano_engine import execute_script
+from core.nano_engine import NanoScriptEngine
+
+engine = NanoScriptEngine()
 
 # Define your maximum expected times and memory usage for each script type
 # These should be determined based on your performance benchmarks
@@ -18,6 +20,6 @@ MAX_MEMORY = {
 @pytest.mark.parametrize("script_type", ["small", "medium", "large"])
 def test_against_golden(golden_scripts, script_type):
     for script in golden_scripts.get(script_type, []):
-        time, mem = execute_script(script)
+        time, mem = engine.execute_script(script)
         assert time < MAX_TIMES[script_type]
         assert mem < MAX_MEMORY[script_type]

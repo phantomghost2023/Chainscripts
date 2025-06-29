@@ -12,6 +12,111 @@ A revolutionary script orchestration platform that merges hyper-compression, AI-
 - **Decentralized Sharing**: IPFS-based script marketplace
 - **Zero-Second Workflows**: Parallel execution with automatic fallbacks
 
+- **Quantum Execution Sandbox**:
+  ```python
+  from chainscript.qpu import RigettiBackend
+  quantum_engine = RigettiBackend(api_key=os.getenv('RIGETTI_KEY'))
+  ```
+
+## 🗺️ Roadmap
+
+To enhance ChainScript's capabilities and adoption, we should focus on **technical depth**, **ecosystem expansion**, and **developer experience**. Here are strategic enhancements across key dimensions:
+
+---
+
+### **1. Core Engine Enhancements**
+#### **A. Quantum-Classical Hybrid Execution**
+- Implement dynamic workload splitting between classical/QPU based on:
+  ```python
+  if problem_scale > quantum_threshold:
+      quantum_engine.solve(problem)
+  else:
+      classical_solver.run(problem)
+  ```
+- Add support for **quantum error mitigation** in the Rigetti backend
+
+#### **B. Nano-Script Optimization**
+- Introduce **LLM-based script compression** (e.g., identify redundant operations)
+- Add **cross-script deduplication** via cryptographic hashing of script functions
+
+#### **C. Performance**
+- Develop **profile-guided optimization** (PGO) for bytecode compiler
+- Implement **hardware-aware execution** (auto-detection of GPU/TPU/quantum resources)
+
+---
+
+### **2. AI/ML Integration**
+#### **A. Smart Debugging**
+```python
+def ai_debugger(error_log):
+    return DebugGPT.analyze(error_log).suggest_fixes()
+```
+- Train model on Stack Overflow/ GitHub issues corpus
+
+#### **B. Predictive Composition**
+- **Next-script recommendation** engine based on:
+  - Historical workflow patterns
+  - Similarity to current nano-script sequence
+
+#### **C. Adversarial Testing**
+- Use GANs to generate **edge-case test inputs** for nano-scripts
+
+---
+
+### **3. Decentralized Ecosystem**
+#### **A. IPFS Improvements**
+- Implement **version-controlled nano-scripts** via IPLD
+- Add **proof-of-execution** blockchain layer for script reputation
+
+#### **B. Marketplace Features**
+- **Bounty system** for script development
+- **Quality scoring** based on:
+  ```math
+  Score = (execution_success_rate * 0.6) + (community_rating * 0.4)
+  ```
+
+---
+
+### **4. Developer Experience**
+#### **A. Visual Workflow Builder**
+- Drag-and-drop interface that generates nano-script DAGs
+- Real-time performance cost estimation
+
+#### **B. Enhanced CLI**
+```bash
+chainscript optimize --quantum ./workflow.py  # Auto-parallelizes for QPU
+chainscript audit --security ./script         # Static analysis
+```
+
+#### **C. VSCode Extension**
+- Live nano-script previews
+- AI-powered autocomplete for script chaining
+
+---
+
+### **5. Security Hardening**
+| Feature               | Implementation                          |
+|-----------------------|----------------------------------------|
+| Zero-Trust Scripting  | JIT sandboxing with eBPF               |
+| Crypto-Agility        | Post-quantum KEMs in `chainscript.crypto` |
+| Provenance Tracking   | SIGSTORE-style attestations            |
+
+---
+
+### **6. Enterprise Features**
+- **SSO Integration** (Okta/Azure AD)
+- **Private Nano-Script Registries**
+- **Compliance Mode** (GDPR/HIPAA-ready workflows)
+
+---
+
+### **Execution Plan**
+1. **Phase 1 (0-3 months)**: Quantum hybrid execution + AI debugger
+2. **Phase 2 (3-6 months)**: IPFS reputation system + visual builder
+3. **Phase 3 (6-12 months)**: Adversarial testing + compliance features
+
+**Key Metric**: Reduce "script-to-execution" time by 10x through these optimizations.
+
 ## 📁 Project Structure
 
 ```

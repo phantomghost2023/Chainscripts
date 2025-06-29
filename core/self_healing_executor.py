@@ -4,10 +4,12 @@ from .auto_classifier import AutoClassifier, ScriptSignature # Assuming auto_cla
 
 @dataclass
 class ExecutionResult:
+    """Represents the result of a script execution, including performance metrics."""
     exec_time: float
     mem_usage: float
 
 class HealingExecutor:
+    """Executes scripts with adaptive healing capabilities based on performance."""
     def __init__(self, detect_profile_func, get_strategy_func, execute_script_func, log_correction_func, auto_classification_error_class):
         self.classifier = AutoClassifier()
         self.performance_log = []
@@ -18,6 +20,7 @@ class HealingExecutor:
         self._AutoClassificationError = auto_classification_error_class
     
     def execute_with_healing(self, script_path: str):
+        """Executes a script and attempts to heal performance issues adaptively."""
         signature = self.classifier.analyze_script(script_path)
         initial_profile_info = self._detect_profile(script_path)
         initial_profile_category = initial_profile_info.get('size_category', 'default')

@@ -1,0 +1,6 @@
+# filepath: h:\PhantomGhost\Storage\Media\Media\Projects\MyProjects\chainscript\.pre-commit-config.yaml
+repos:
+  - repo: https://github.com/psf/black
+    rev: 23.7.0
+    hooks:
+      - id: black

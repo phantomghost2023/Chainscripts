@@ -2,6 +2,7 @@
 
 import math
 
+
 def calculate_complex_value(x, y):
     result = 0
     for i in range(100):
@@ -10,6 +11,7 @@ def calculate_complex_value(x, y):
         else:
             result -= math.log(y + i)
     return result
+
 
 if __name__ == "__main__":
     val = calculate_complex_value(10, 5)
